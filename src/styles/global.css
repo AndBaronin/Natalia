@@ -1,0 +1,17 @@
+:root {
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
