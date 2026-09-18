@@ -1,0 +1,35 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  contact: string;
+  slogan: string;
+  photoAlt: string;
+}
+
+const { name, role, contact, slogan, photoAlt } = Astro.props;
+---
+
+<section class="home-hero">
+  <div class="home-hero__image">
+    <div class="home-hero__placeholder">
+      <span>{photoAlt}</span>
+    </div>
+  </div>
+
+  <div class="home-hero__content">
+    <div class="home-hero__logo" aria-label="Natalia Saronova Property">
+      NS
+    </div>
+
+    <h1>{name}</h1>
+
+    <p class="home-hero__role">{role}</p>
+
+    <a class="home-hero__contact" href="#contacts">
+      {contact}
+    </a>
+
+    <p class="home-hero__slogan">{slogan}</p>
+  </div>
+</section>

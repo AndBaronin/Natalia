@@ -1,12 +1,15 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import HomeHero from '../components/HomeHero.astro';
+import { home } from '../data/en/home';
+import HomeIntro from '../components/HomeIntro.astro';
+
 ---
 
 <MainLayout
   title="Natalia Saronova Property"
   description="Real estate services in Crete."
 >
-  <main>
-    <h1>Natalia Saronova Property</h1>
-  </main>
+  <HomeHero {...home} />
+  <HomeIntro />
 </MainLayout>
