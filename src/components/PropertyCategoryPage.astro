@@ -1,5 +1,6 @@
 ---
 interface Property {
+  slug: string;
   title: string;
   location: string;
   description: string;
@@ -26,17 +27,20 @@ const { title, description, properties } = Astro.props;
 
   <div class="property-category__grid">
     {properties.map((property) => (
-      <article class="property-card">
+      <a
+        class="property-card"
+        href={`/properties/${Astro.params.category}/${property.slug}`}
+        >
         <div class="property-card__image">
-          <span>PHOTO</span>
+            <span>PHOTO</span>
         </div>
 
         <div class="property-card__content">
-          <h2>{property.title}</h2>
-          <p class="property-card__location">{property.location}</p>
-          <p>{property.description}</p>
+            <h2>{property.title}</h2>
+            <p class="property-card__location">{property.location}</p>
+            <p>{property.description}</p>
         </div>
-      </article>
+    </a>
     ))}
   </div>
 </section>

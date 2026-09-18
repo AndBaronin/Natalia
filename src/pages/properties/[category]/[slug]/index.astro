@@ -1,0 +1,56 @@
+---
+import MainLayout from '../../../../layouts/MainLayout.astro';
+import { propertyCategories } from '../../../../data/en/property-categories';
+import { propertiesList } from '../../../../data/en/properties-list';
+
+export function getStaticPaths() {
+  return Object.entries(propertiesList).flatMap(([category, properties]) =>
+    properties.map((property) => ({
+      params: {
+        category,
+        slug: property.slug,
+      },
+      props: {
+        property,
+      },
+    }))
+  );
+}
+
+const { property } = Astro.props;
+const category = Astro.params.category as keyof typeof propertyCategories;
+---
+
+<MainLayout
+  title={`${property.title} | Natalia Saronova Property`}
+  description={property.description}
+>
+  <section class="property-detail">
+    <a
+      class="property-detail__back"
+      href={`/properties/${category}`}
+    >
+      ← BACK TO {propertyCategories[category].title}
+    </a>
+
+    <div class="property-detail__hero">
+      <div class="property-detail__image">
+        <span>PHOTO</span>
+      </div>
+
+      <div class="property-detail__content">
+        <p class="property-detail__category">
+          {propertyCategories[category].title}
+        </p>
+
+        <h1>{property.title}</h1>
+
+        <p class="property-detail__location">
+          {property.location}
+        </p>
+
+        <p>{property.description}</p>
+      </div>
+    </div>
+  </section>
+</MainLayout>
