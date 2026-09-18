@@ -1,0 +1,22 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PropertyCategoryCard from '../../components/PropertyCategoryCard.astro';
+import { properties } from '../../data/en/properties';
+---
+
+<MainLayout
+  title="Properties | Natalia Saronova Property"
+  description="Property categories in Crete."
+>
+  <section class="properties">
+    <div class="properties__header">
+      <h1>{properties.title}</h1>
+    </div>
+
+    <div class="properties__grid">
+      {properties.categories.map((category) => (
+        <PropertyCategoryCard {...category} />
+      ))}
+    </div>
+  </section>
+</MainLayout>

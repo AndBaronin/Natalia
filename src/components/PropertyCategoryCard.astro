@@ -1,0 +1,24 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  purpose: string;
+}
+
+const { slug, title, description, purpose } = Astro.props;
+---
+
+<a class="property-category-card" href={`/properties/${slug}`}>
+  <div class="property-category-card__image">
+    <span>PHOTO</span>
+  </div>
+
+  <div class="property-category-card__content">
+    <h2>{title}</h2>
+
+    <p>{description}</p>
+
+    <p>{purpose}</p>
+  </div>
+</a>
