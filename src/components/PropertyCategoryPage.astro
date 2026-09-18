@@ -1,0 +1,42 @@
+---
+interface Property {
+  title: string;
+  location: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  properties: Property[];
+}
+
+const { title, description, properties } = Astro.props;
+---
+
+<section class="property-category">
+  <div class="property-category__header">
+    <a class="property-category__back" href="/properties">
+      ← BACK TO PROPERTIES
+    </a>
+
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
+
+  <div class="property-category__grid">
+    {properties.map((property) => (
+      <article class="property-card">
+        <div class="property-card__image">
+          <span>PHOTO</span>
+        </div>
+
+        <div class="property-card__content">
+          <h2>{property.title}</h2>
+          <p class="property-card__location">{property.location}</p>
+          <p>{property.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

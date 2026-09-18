@@ -1,0 +1,27 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import PropertyCategoryPage from '../../../components/PropertyCategoryPage.astro';
+import { propertyCategories } from '../../../data/en/property-categories';
+import { propertiesList } from '../../../data/en/properties-list';
+
+export function getStaticPaths() {
+  return Object.keys(propertyCategories).map((category) => ({
+    params: { category },
+  }));
+}
+
+const category = Astro.params.category as keyof typeof propertyCategories;
+const categoryData = propertyCategories[category];
+const properties = propertiesList[category];
+---
+
+<MainLayout
+  title={`${categoryData.title} | Natalia Saronova Property`}
+  description={categoryData.description}
+>
+  <PropertyCategoryPage
+    title={categoryData.title}
+    description={categoryData.description}
+    properties={properties}
+  />
+</MainLayout>
