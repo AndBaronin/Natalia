@@ -1,0 +1,42 @@
+---
+interface Milestone {
+  year: string;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  title: string;
+  intro: {
+    title: string;
+    text: string;
+  };
+  milestones: Milestone[];
+}
+
+const { title, intro, milestones } = Astro.props;
+---
+
+<section class="my-story">
+  <div class="my-story__header">
+    <h1>{title}</h1>
+  </div>
+
+  <div class="my-story__intro">
+    <h2>{intro.title}</h2>
+    <p>{intro.text}</p>
+  </div>
+
+  <div class="my-story__timeline">
+    {milestones.map((milestone) => (
+      <article class="my-story__item">
+        <span class="my-story__year">{milestone.year}</span>
+
+        <div>
+          <h2>{milestone.title}</h2>
+          <p>{milestone.text}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,12 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import MyStory from '../components/MyStory.astro';
+import { myStory } from '../data/en/my-story';
+---
+
+<MainLayout
+  title="My Story | Natalia Saronova Property"
+  description="The story of Natalia Saronova."
+>
+  <MyStory {...myStory} />
+</MainLayout>
